@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alvora Jewellery — Beautifully Crafted. Honestly Priced. | Launching Soon</title>
+<meta name="description" content="Alvora Jewellery is launching soon. Discover handcrafted gold and diamond jewellery with certified gemstones and transparent pricing. Visit our flagship store in Gurgaon or shop online soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Tenor+Sans&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --teal:    #1a4a42;
+    --teal-mid:#1e5549;
+    --gold:    #c9a96e;
+    --gold-lt: #e8d5a3;
+    --cream:   #faf7f2;
+    --white:   #ffffff;
+    --dark:    #0e2b26;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--teal);
+    font-family: 'Tenor Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── Custom cursor ── */
+  .cursor {
+    position: fixed; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--gold);
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform .15s ease, opacity .15s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border-radius: 50%; border: 1px solid var(--gold);
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: transform .4s ease, width .3s, height .3s;
+    opacity: .6;
+  }
+
+  /* ── Noise overlay ── */
+  body::before {
+    content:''; position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:1; opacity:.4;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background: var(--teal);
+    overflow: hidden;
+  }
+
+  /* decorative arcs */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -180px; right: -180px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,.18);
+    pointer-events: none;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -280px; right: -280px;
+    width: 720px; height: 720px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,.10);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* top bar */
+  .nav {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 36px 60px;
+    animation: fadeDown .9s ease both;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .nav-logo img {
+    width: 38px; filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg);
+    opacity: .9;
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500;
+    letter-spacing: .3em; color: var(--gold-lt);
+    text-transform: uppercase;
+  }
+  .nav-tag {
+    font-size: 10px; letter-spacing: .2em;
+    color: rgba(201,169,110,.55);
+    text-transform: uppercase;
+  }
+
+  /* hero body */
+  .hero-body {
+    position: relative; z-index: 5;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: .4em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeUp .8s .3s ease both;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; width: 40px; height: 1px; background: var(--gold); opacity: .5;
+  }
+
+  .hero-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 10vw, 128px);
+    font-weight: 300; line-height: .92;
+    color: var(--white); letter-spacing: -.01em;
+    animation: fadeUp .9s .45s ease both;
+  }
+  .hero-heading em {
+    font-style: italic; color: var(--gold-lt);
+  }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: rgba(255,255,255,.55);
+    letter-spacing: .08em;
+    animation: fadeUp .9s .6s ease both;
+  }
+
+  /* countdown */
+  .countdown {
+    margin-top: 64px;
+    display: flex; gap: 40px;
+    animation: fadeUp .9s .75s ease both;
+  }
+  .cd-unit { text-align: center; }
+  .cd-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 300; color: var(--gold-lt);
+    line-height: 1; display: block;
+    min-width: 80px;
+  }
+  .cd-label {
+    font-size: 9px; letter-spacing: .3em;
+    color: rgba(255,255,255,.35); text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .cd-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; color: var(--gold);
+    opacity: .3; align-self: flex-start; padding-top: 6px;
+    animation: blink 1.4s infinite;
+  }
+
+  /* email signup */
+  .signup-wrap {
+    margin-top: 56px;
+    animation: fadeUp .9s .9s ease both;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+  }
+  .signup-label {
+    font-size: 10px; letter-spacing: .3em;
+    color: rgba(255,255,255,.4); text-transform: uppercase;
+  }
+  .signup-row {
+    display: flex; align-items: stretch; gap: 0;
+    border: 1px solid rgba(201,169,110,.35);
+  }
+  .signup-row input {
+    background: transparent; border: none; outline: none;
+    padding: 14px 24px; width: 260px;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 12px; letter-spacing: .1em;
+    color: var(--white);
+  }
+  .signup-row input::placeholder { color: rgba(255,255,255,.3); }
+  .signup-row button {
+    background: var(--gold); border: none;
+    padding: 14px 24px; cursor: none;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 10px; letter-spacing: .25em;
+    text-transform: uppercase; color: var(--dark);
+    transition: background .3s;
+  }
+  .signup-row button:hover { background: var(--gold-lt); }
+
+  /* hero footer strip */
+  .hero-foot {
+    position: relative; z-index: 5;
+    padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,169,110,.12);
+    animation: fadeUp .8s 1.1s ease both;
+  }
+  .hero-foot-address {
+    font-size: 11px; letter-spacing: .08em;
+    color: rgba(255,255,255,.3); line-height: 1.7;
+  }
+  .hero-foot-address strong {
+    color: rgba(255,255,255,.5); font-weight: 400;
+    letter-spacing: .15em; font-size: 9px; text-transform: uppercase;
+  }
+  .hero-foot-social {
+    display: flex; gap: 20px;
+  }
+  .hero-foot-social a {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: rgba(255,255,255,.3); text-decoration: none;
+    transition: color .3s;
+  }
+  .hero-foot-social a:hover { color: var(--gold); }
+
+  /* ── ABOUT STRIP ── */
+  .about {
+    background: var(--cream);
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-left { }
+  .about-eyebrow {
+    font-size: 10px; letter-spacing: .4em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .about-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: .3; max-width: 60px; }
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--teal);
+  }
+  .about-heading em { font-style: italic; color: var(--gold); }
+  .about-body {
+    margin-top: 28px;
+    font-family: 'EB Garamond', serif;
+    font-size: 17px; line-height: 1.85;
+    color: #3d6a60; max-width: 460px;
+  }
+  .about-right {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .about-tile {
+    aspect-ratio: 1;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    position: relative; overflow: hidden;
+  }
+  .about-tile:nth-child(1) { background: var(--teal); }
+  .about-tile:nth-child(2) { background: var(--gold-lt); }
+  .about-tile:nth-child(3) { background: #e8e2d8; }
+  .about-tile:nth-child(4) { background: var(--teal-mid); }
+  .about-tile-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300;
+    opacity: .18; position: absolute; top: 16px; right: 20px;
+    line-height: 1;
+  }
+  .about-tile:nth-child(1) .about-tile-num,
+  .about-tile:nth-child(4) .about-tile-num { color: #fff; }
+  .about-tile-title {
+    font-size: 12px; letter-spacing: .2em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .about-tile:nth-child(1) .about-tile-title,
+  .about-tile:nth-child(4) .about-tile-title { color: var(--gold-lt); }
+  .about-tile:nth-child(2) .about-tile-title,
+  .about-tile:nth-child(3) .about-tile-title { color: var(--teal); }
+  .about-tile-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px; line-height: 1.6; opacity: .7;
+  }
+  .about-tile:nth-child(1) .about-tile-text,
+  .about-tile:nth-child(4) .about-tile-text { color: #fff; }
+
+  /* ── FEATURES ── */
+  .features {
+    background: var(--dark);
+    padding: 120px 60px;
+    text-align: center;
+  }
+  .features-eyebrow {
+    font-size: 10px; letter-spacing: .4em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .features-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 300; color: var(--white);
+    margin-bottom: 80px;
+  }
+  .features-heading em { font-style: italic; color: var(--gold-lt); }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,.06);
+  }
+  .feat-card {
+    background: var(--dark);
+    padding: 56px 40px;
+    text-align: left;
+    transition: background .4s;
+    position: relative; overflow: hidden;
+  }
+  .feat-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0);
+    transform-origin: left; transition: transform .4s;
+  }
+  .feat-card:hover::before { transform: scaleX(1); }
+  .feat-card:hover { background: #132420; }
+  .feat-icon {
+    width: 44px; height: 44px; margin-bottom: 28px;
+    opacity: .8;
+  }
+  .feat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: .3em;
+    color: var(--gold); opacity: .5;
+    margin-bottom: 16px; display: block;
+  }
+  .feat-title {
+    font-size: 13px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold-lt);
+    margin-bottom: 14px;
+  }
+  .feat-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px; line-height: 1.8;
+    color: rgba(255,255,255,.4);
+  }
+
+  /* ── LOCATION ── */
+  .location {
+    background: var(--cream);
+    padding: 120px 60px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .location-info { }
+  .location-eyebrow {
+    font-size: 10px; letter-spacing: .4em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .location-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300; color: var(--teal);
+    line-height: 1.15; margin-bottom: 32px;
+  }
+  .location-heading em { font-style: italic; }
+  .location-detail {
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .location-detail-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .location-detail-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+  .location-detail-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px; line-height: 1.7; color: #3d6a60;
+  }
+  .location-detail-label {
+    font-size: 9px; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 4px; display: block;
+  }
+  .location-map {
+    position: relative; aspect-ratio: 1.1;
+    background: #d6cfc4; overflow: hidden;
+  }
+  .location-map iframe {
+    width: 100%; height: 100%; border: none;
+    filter: sepia(.3) saturate(.8);
+  }
+  .location-map-overlay {
+    position: absolute; inset: 0;
+    border: 6px solid var(--cream);
+    pointer-events: none;
+  }
+  .location-map-pin {
+    position: absolute; bottom: 28px; left: 28px;
+    background: var(--teal); padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .location-map-pin svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink:0; }
+  .location-map-pin-text {
+    font-size: 11px; letter-spacing: .1em;
+    color: rgba(255,255,255,.7); line-height: 1.5;
+  }
+  .location-map-pin-text strong { color: var(--gold-lt); display:block; font-size:12px; }
+
+  /* ── BOTTOM CTA ── */
+  .cta-strip {
+    background: var(--teal);
+    padding: 100px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: 'ALVORA';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(120px, 18vw, 240px);
+    font-weight: 600;
+    color: rgba(255,255,255,.03);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: .1em;
+  }
+  .cta-eyebrow {
+    font-size: 10px; letter-spacing: .4em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .cta-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 300; color: var(--white);
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  .cta-heading em { font-style: italic; color: var(--gold-lt); }
+  .cta-sub {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px; color: rgba(255,255,255,.45);
+    margin-bottom: 48px; letter-spacing: .05em;
+  }
+  .cta-btn {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    padding: 18px 48px;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 11px; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none;
+    transition: background .3s, color .3s;
+    cursor: none;
+  }
+  .cta-btn:hover { background: var(--gold); color: var(--dark); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark);
+    padding: 40px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,169,110,.1);
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; letter-spacing: .3em;
+    color: rgba(255,255,255,.3); text-transform: uppercase;
+  }
+  .footer-copy {
+    font-size: 10px; letter-spacing: .1em;
+    color: rgba(255,255,255,.2);
+  }
+  .footer-tagline {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12px; color: rgba(201,169,110,.4);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes blink {
+    0%,100% { opacity: .3; } 50% { opacity: .7; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+
+  /* Tablet: 601–1024px */
+  @media (max-width: 1024px) {
+    .nav { padding: 28px 36px; }
+    .hero-foot { padding: 24px 36px; }
+    .about { padding: 90px 36px; gap: 48px; }
+    .features { padding: 90px 36px; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .location { padding: 90px 36px; gap: 48px; }
+    .cta-strip { padding: 90px 36px; }
+    .footer { padding: 36px 36px; }
+  }
+
+  /* Mobile: ≤600px */
+  @media (max-width: 600px) {
+    /* hide custom cursor on touch */
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+    button, a { cursor: pointer; }
+
+    /* NAV */
+    .nav {
+      padding: 20px 20px;
+      flex-direction: row;
+      align-items: center;
+    }
+    .nav-brand { font-size: 18px; letter-spacing: .2em; }
+    .nav-tag { display: none; }
+    .nav-logo img { width: 30px; }
+    .nav > div:last-child { font-size: 9px; letter-spacing: .2em; }
+
+    /* HERO */
+    .hero-body { padding: 32px 20px 40px; }
+    .hero-eyebrow { font-size: 9px; letter-spacing: .3em; margin-bottom: 24px; }
+    .hero-eyebrow::before, .hero-eyebrow::after { width: 24px; }
+    .hero-heading { font-size: clamp(52px, 14vw, 80px); line-height: .95; }
+    .hero-sub { font-size: 14px; margin-top: 20px; letter-spacing: .04em; }
+
+    /* COUNTDOWN */
+    .countdown { gap: 12px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+    .cd-num { font-size: 44px; min-width: 56px; }
+    .cd-label { font-size: 8px; letter-spacing: .2em; }
+    .cd-sep { font-size: 38px; padding-top: 4px; }
+
+    /* SIGNUP */
+    .signup-wrap { margin-top: 36px; width: 100%; padding: 0 4px; }
+    .signup-row { flex-direction: column; border: none; width: 100%; gap: 8px; }
+    .signup-row input {
+      width: 100%;
+      border: 1px solid rgba(201,169,110,.35);
+      padding: 14px 18px;
+      font-size: 13px;
+    }
+    .signup-row button {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    /* HERO FOOT */
+    .hero-foot {
+      padding: 20px 20px;
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+    }
+    .hero-foot-address { font-size: 10px; line-height: 1.8; }
+    .hero-foot-social { gap: 16px; justify-content: center; }
+    .hero-foot-social a { font-size: 9px; }
+
+    /* ABOUT */
+    .about {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 64px 20px;
+    }
+    .about-heading { font-size: clamp(32px, 9vw, 46px); }
+    .about-body { font-size: 15px; max-width: 100%; }
+    .about-right { grid-template-columns: 1fr 1fr; gap: 2px; }
+    .about-tile { padding: 20px 16px; aspect-ratio: auto; min-height: 130px; }
+    .about-tile-num { font-size: 36px; top: 10px; right: 12px; }
+    .about-tile-title { font-size: 10px; letter-spacing: .15em; }
+    .about-tile-text { font-size: 12px; }
+
+    /* FEATURES */
+    .features { padding: 64px 20px; }
+    .features-eyebrow { font-size: 9px; }
+    .features-heading { font-size: clamp(30px, 8vw, 44px); margin-bottom: 40px; }
+    .features-grid { grid-template-columns: 1fr; gap: 1px; }
+    .feat-card { padding: 36px 24px; }
+    .feat-icon { width: 36px; height: 36px; margin-bottom: 20px; }
+    .feat-title { font-size: 11px; }
+    .feat-body { font-size: 14px; }
+
+    /* LOCATION */
+    .location {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 64px 20px;
+    }
+    .location-heading { font-size: clamp(30px, 8vw, 44px); margin-bottom: 24px; }
+    .location-detail { gap: 12px; margin-bottom: 20px; }
+    .location-detail-icon { width: 32px; height: 32px; flex-shrink: 0; }
+    .location-detail-text { font-size: 14px; }
+    .location-map { aspect-ratio: 1.2; min-height: 280px; }
+    .location-map-pin { bottom: 16px; left: 16px; padding: 10px 14px; gap: 8px; }
+    .location-map-pin-text { font-size: 10px; }
+    .location-map-pin-text strong { font-size: 11px; }
+
+    /* CTA */
+    .cta-strip { padding: 64px 20px; }
+    .cta-heading { font-size: clamp(36px, 10vw, 56px); }
+    .cta-sub { font-size: 15px; margin-bottom: 36px; }
+    .cta-btn {
+      padding: 16px 36px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    .footer {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 28px 20px;
+    }
+    .footer-brand { font-size: 14px; }
+    .footer-copy { font-size: 9px; }
+    .footer-tagline { font-size: 11px; }
+  }
+
+  /* Very small phones: ≤380px */
+  @media (max-width: 380px) {
+    .hero-heading { font-size: 46px; }
+    .cd-num { font-size: 36px; min-width: 46px; }
+    .cd-sep { font-size: 30px; }
+    .countdown { gap: 8px; }
+    .about-right { grid-template-columns: 1fr; }
+    .about-tile { min-height: 100px; aspect-ratio: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <nav class="nav">
+    <div class="nav-logo">
+      <!-- inline SVG lotus from logo -->
+      <svg viewBox="0 0 80 60" width="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 8 C40 8 28 18 28 30 C28 30 34 24 40 24 C46 24 52 30 52 30 C52 18 40 8 40 8Z" stroke="#c9a96e" stroke-width="1.5" fill="none"/>
+        <path d="M40 24 C40 24 32 28 28 38 C28 38 34 34 40 38 C46 34 52 38 52 38 C48 28 40 24 40 24Z" stroke="#c9a96e" stroke-width="1.5" fill="none"/>
+        <path d="M28 30 C28 30 16 26 14 38 C14 38 20 32 28 38" stroke="#c9a96e" stroke-width="1.5" fill="none"/>
+        <path d="M52 30 C52 30 64 26 66 38 C66 38 60 32 52 38" stroke="#c9a96e" stroke-width="1.5" fill="none"/>
+        <path d="M22 24 C22 24 12 18 10 30 C10 30 16 24 22 30" stroke="#c9a96e" stroke-width="1.2" fill="none" opacity=".6"/>
+        <path d="M58 24 C58 24 68 18 70 30 C70 30 64 24 58 30" stroke="#c9a96e" stroke-width="1.2" fill="none" opacity=".6"/>
+        <line x1="28" y1="38" x2="52" y2="38" stroke="#c9a96e" stroke-width="1" opacity=".4"/>
+      </svg>
+      <div>
+        <div class="nav-brand">Alvora</div>
+        <div class="nav-tag">Beautifully Crafted. Honestly Priced.</div>
+      </div>
+    </div>
+    <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.45);">Coming Soon</div>
+  </nav>
+
+  <div class="hero-body">
+    <div class="hero-eyebrow">Crafting the Future of Fine Jewellery</div>
+    <h1 class="hero-heading">Launching<br><em>Soon</em></h1>
+    <p class="hero-sub">Where gorgeous jewellery meets transparent pricing</p>
+
+    <div class="countdown" id="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><div class="cd-label">Days</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><div class="cd-label">Hours</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><div class="cd-label">Minutes</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-sec">--</span><div class="cd-label">Seconds</div></div>
+    </div>
+
+    <div class="signup-wrap">
+      <div class="signup-label">Get notified when our collection drops.</div>
+      <div class="signup-row">
+        <input type="email" placeholder="Enter your email address" id="emailInput">
+        <button onclick="handleSignup()">Notify Me</button>
+      </div>
+      <div id="signup-msg" style="font-size:11px;color:rgba(201,169,110,.6);letter-spacing:.1em;height:16px;"></div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="hero-foot-address">
+      <strong>Find Us Soon At</strong><br>
+      LG 037, Lower Ground, Elan Miracle<br>
+      Sector 84, Gurgaon, Haryana 122004
+    </div>
+    <div class="hero-foot-social">
+      <span style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);">Follow Our Journey</span>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about">
+  <div class="about-left reveal">
+    <div class="about-eyebrow">Our Story</div>
+    <h2 class="about-heading">The Beginning<br>of <em>Alvora</em></h2>
+    <p class="about-body">
+      Alvora was born of the simple belief that jewellery can be as honest and pure as it is beautiful.<br><br>
+      Jewellery for generations has the spirit of celebration, love stories and immortal memories. But purchasing it can often be confusing and unclear. We started Alvora to solve this experience.<br><br>
+      Our aim is to integrate extraordinary craftsmanship, approved quality and absolute transparency so that each customer can confidently buy jewellery. Each piece made by Alvora is intentional, hand-crafted and ethically sourced. Everything — from our BIS hallmarked gold to certified diamonds and gemstones — reflects our commitment towards authenticity and trust.<br><br>
+      Alvora is not just about jewellery — it is about making pieces that become part of your history and what you live for the next years or decades.
+    </p>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-tile">
+      <span class="about-tile-num">01</span>
+      <div class="about-tile-title">Handcrafted</div>
+      <div class="about-tile-text">Handcrafted by skilled artisans using age-old crafting methods.</div>
+    </div>
+    <div class="about-tile">
+      <span class="about-tile-num">02</span>
+      <div class="about-tile-title">Transparent</div>
+      <div class="about-tile-text">Choose pricing with complete cost breakdown.</div>
+    </div>
+    <div class="about-tile">
+      <span class="about-tile-num">03</span>
+      <div class="about-tile-title">Certified</div>
+      <div class="about-tile-text">Gemstones and metals — independently certified.</div>
+    </div>
+    <div class="about-tile">
+      <span class="about-tile-num">04</span>
+      <div class="about-tile-title">Timeless</div>
+      <div class="about-tile-text">Graceful designs built for longevity and excellence.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section class="features">
+  <div class="features-eyebrow reveal">The Alvora Promise</div>
+  <h2 class="features-heading reveal">The Alvora <em>Promise</em></h2>
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <svg class="feat-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#c9a96e" stroke-width="1"/>
+        <path d="M14 22l5 5 11-10" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="feat-num">01 —</span>
+      <div class="feat-title">BIS Hallmarked Gold</div>
+      <p class="feat-body">Each gold piece is BIS hallmarked for proven purity and authenticity.</p>
+    </div>
+    <div class="feat-card reveal">
+      <svg class="feat-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,4 28,16 42,18 32,28 35,42 22,35 9,42 12,28 2,18 16,16" stroke="#c9a96e" stroke-width="1" fill="none"/>
+      </svg>
+      <span class="feat-num">02 —</span>
+      <div class="feat-title">Certified Gemstones</div>
+      <p class="feat-body">Lab-grown precious gemstones have separate certification for quality and trust.</p>
+    </div>
+    <div class="feat-card reveal">
+      <svg class="feat-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 4 C22 4 8 12 8 24 C8 33 14 40 22 40 C30 40 36 33 36 24 C36 12 22 4 22 4Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M16 24 C18 28 26 28 28 24" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <span class="feat-num">03 —</span>
+      <div class="feat-title">Certified Diamonds</div>
+      <p class="feat-body">Our diamonds are carefully selected for brilliance and come with trusted certification for complete confidence.</p>
+    </div>
+    <div class="feat-card reveal">
+      <svg class="feat-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="14" width="28" height="22" rx="2" stroke="#c9a96e" stroke-width="1"/>
+        <path d="M16 14v-4a6 6 0 0112 0v4" stroke="#c9a96e" stroke-width="1"/>
+        <circle cx="22" cy="25" r="3" stroke="#c9a96e" stroke-width="1"/>
+      </svg>
+      <span class="feat-num">04 —</span>
+      <div class="feat-title">Transparent Pricing</div>
+      <p class="feat-body">Each product will have a well-defined cost plan — metal, stones, making charges and GST.</p>
+    </div>
+    <div class="feat-card reveal">
+      <svg class="feat-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 8 L36 16 L36 32 L22 40 L8 32 L8 16 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M22 14 L30 19 L30 29 L22 34 L14 29 L14 19 Z" stroke="#c9a96e" stroke-width=".7" fill="none" opacity=".5"/>
+      </svg>
+      <span class="feat-num">05 —</span>
+      <div class="feat-title">Handcrafted Jewellery</div>
+      <p class="feat-body">The designs are produced by skilled artificers, carrying forward techniques passed down from generations of jewellers.</p>
+    </div>
+    <div class="feat-card reveal">
+      <svg class="feat-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 22 Q10 10 22 8 Q34 10 36 22 Q34 34 22 38 Q10 34 8 22Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+        <path d="M22 14 v8 l6 4" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <span class="feat-num">06 —</span>
+      <div class="feat-title">Lifetime Jewellery Care</div>
+      <p class="feat-body">We provide free cleaning and polishing services to help maintain your jewellery so that it can shine bright for years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LOCATION ═══════════ -->
+<section class="location">
+  <div class="location-info reveal">
+    <div class="location-eyebrow">Visit Our Flagship Store</div>
+    <h2 class="location-heading">Experience<br>Alvora <em>in person</em></h2>
+
+    <p style="font-family:'EB Garamond',serif;font-size:16px;line-height:1.75;color:#3d6a60;margin-bottom:32px;">While our online store will soon be open and ready for novices and seasoned jewellery lovers alike, you can also experience Alvora jewellery at our Gurgaon location. Try things on, discuss with our jewellery advisors, and discover craftsmanship with transparent pricing.</p>
+
+    <div class="location-detail">
+      <div class="location-detail-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </div>
+      <div class="location-detail-text">
+        <span class="location-detail-label">Address</span>
+        LG 037, Lower Ground Floor<br>
+        Elan Miracle, Sector 84<br>
+        Gurgaon, Haryana — 122004
+      </div>
+    </div>
+
+    <div class="location-detail">
+      <div class="location-detail-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </div>
+      <div class="location-detail-text">
+        <span class="location-detail-label">Grand Opening</span>
+        Launching Soon — Stay tuned for our<br>opening date announcement
+      </div>
+    </div>
+
+    <div class="location-detail">
+      <div class="location-detail-icon">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+      </div>
+      <div class="location-detail-text">
+        <span class="location-detail-label">For Enquiries</span>
+        Drop your email above and we'll reach out<br>before the official opening
+      </div>
+    </div>
+  </div>
+
+  <div class="location-map reveal">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.6!2d77.028!3d28.411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDI0JzM5LjYiTiA3N8KwMDEnNDQuOCJF!5e0!3m2!1sen!2sin!4v1234567890"
+      allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <div class="location-map-overlay"></div>
+    <div class="location-map-pin">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <div class="location-map-pin-text">
+        <strong>Alvora Jewellery</strong>
+        Elan Miracle, Sector 84, Gurgaon
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cta-strip">
+  <div class="cta-eyebrow reveal">Join the Waitlist</div>
+  <h2 class="cta-heading reveal">Become part of<br>our <em>beginning</em></h2>
+  <p class="cta-sub reveal">Be the first to access our collection, exclusive previews and early member privileges.</p>
+  <a href="#emailInput" class="cta-btn reveal" onclick="document.getElementById('emailInput').focus();return false;">
+    Reserve Your Spot
+  </a>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="footer-brand">Alvora</div>
+  <div class="footer-copy">© 2025 Alvora. All rights reserved.</div>
+  <div class="footer-tagline">Beautifully Crafted. Honestly Priced.</div>
+</footer>
+
+<script>
+  // ── Cursor (desktop only)
+  const isTouchDevice = () => window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  if (!isTouchDevice()) {
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+      setTimeout(() => {
+        ring.style.left = e.clientX + 'px';
+        ring.style.top  = e.clientY + 'px';
+      }, 60);
+    });
+    document.querySelectorAll('a,button,input').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '60px'; ring.style.height = '60px';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '36px'; ring.style.height = '36px';
+      });
+    });
+  } else {
+    cursor.style.display = 'none';
+    ring.style.display = 'none';
+    document.body.style.cursor = 'auto';
+  }
+
+  // ── Countdown  (target: 90 days from now)
+  const target = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000);
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
+    document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ── Email signup
+  function handleSignup() {
+    const v = document.getElementById('emailInput').value.trim();
+    const msg = document.getElementById('signup-msg');
+    if (!v || !v.includes('@')) {
+      msg.textContent = 'Please enter a valid email.'; return;
+    }
+    msg.textContent = '✦  You\'re on the list. We\'ll be in touch soon.';
+    document.getElementById('emailInput').value = '';
+  }
+  document.getElementById('emailInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSignup();
+  });
+
+  // ── Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .15 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
