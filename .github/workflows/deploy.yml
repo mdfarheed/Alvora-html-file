@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: SSH and Deploy HTML
         uses: appleboy/ssh-action@master
         with:
@@ -17,8 +16,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /var/www/Alvora-html-project
+            cd /var/www/Alvora-html-project/Alvora-html-file
 
-            # Force latest code
             git fetch origin
             git reset --hard origin/main
