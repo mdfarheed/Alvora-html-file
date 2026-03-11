@@ -244,7 +244,7 @@
     gap: 80px;
     align-items: center;
   }
-  .about-left { }
+
   .about-eyebrow {
     font-size: 10px; letter-spacing: .4em;
     text-transform: uppercase; color: var(--gold);
@@ -368,7 +368,7 @@
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 80px; align-items: center;
   }
-  .location-info { }
+  
   .location-eyebrow {
     font-size: 10px; letter-spacing: .4em;
     text-transform: uppercase; color: var(--gold);
@@ -928,20 +928,20 @@
   }
 
   // ── Countdown  (target: 90 days from now)
-  const target = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000);
-  function tick() {
-    const diff = target - Date.now();
-    if (diff <= 0) return;
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
-    document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 1000);
+  // const target = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000);
+  // function tick() {
+  //   const diff = target - Date.now();
+  //   if (diff <= 0) return;
+  //   const d = Math.floor(diff / 86400000);
+  //   const h = Math.floor((diff % 86400000) / 3600000);
+  //   const m = Math.floor((diff % 3600000) / 60000);
+  //   const s = Math.floor((diff % 60000) / 1000);
+  //   document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  //   document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  //   document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
+  //   document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
+  // }
+  // tick(); setInterval(tick, 1000);
 
   // ── Email signup
   function handleSignup() {
