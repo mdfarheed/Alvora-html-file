@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/alvora/subscribe";
+const API_URL = "https://common-api.sparkexhibit.com/api/alvora/subscribe";
 
 function showAlert(message, type = "success") {
 
